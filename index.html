@@ -42,7 +42,32 @@ body{zoom:var(--site-scale)}
 .home-manifesto .ps{font-size:13px;color:#666}
 @media(max-width:760px){.home-manifesto{font-size:14px;line-height:1.9;padding:15px 16px}.home-manifesto .ps{font-size:12.5px}.cover .home-subtitle{max-width:none}}
 
-</style></head><body><aside class="sidebar"><a class="brand" href="#/"><span class="brand-icon">安</span><span>国家安全法学<small>学习笔记</small></span></a><div class="nav-label">学习导航</div><a class="nav-link" href="#/">⌂ <span>首页</span></a><a class="nav-link" href="#/laws">▤ <span>法律集合</span></a><div class="subnav"><a href="#/law/intro">国家安全法学概说</a><a href="#/law/national">国家安全法</a><a href="#/law/espionage">反间谍法</a></div><a class="nav-link" href="#/outlook">◎ <span>总体国家安全观</span></a><div class="subnav"><a href="#/theory/elements">五大要素</a><a href="#/theory/coordination">五个统筹</a><a href="#/theory/principles">十个坚持</a><a href="#/outlook/fields">重点领域</a></div><div class="sidebar-foot">学其理 · 明其义 · 知其用<small>NATIONAL SECURITY LAW</small></div></aside><div class="workspace"><header class="topbar"><a href="#/" class="mobile-brand">安 / 国家安全法学</a><span id="breadcrumb">学习空间 / 首页</span><div class="top-actions"><span class="top-note">法学生的知识笔记</span><div class="font-controls" aria-label="网站字号"><button class="font-control-btn" id="font-dec" type="button" title="减小网站字号">A−</button><button class="font-control-btn" id="font-reset" type="button" title="恢复默认字号"><span class="font-scale-value" id="font-scale-value">100%</span></button><button class="font-control-btn" id="font-inc" type="button" title="增大网站字号">A＋</button></div></div></header><main id="app"></main><footer>国家安全法学 </footer></div><script>
+
+/* ---- 2026-10 knowledge base / global search ---- */
+.global-search-trigger{display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--line);background:#fff;color:#333;font-size:12px;white-space:nowrap}
+.global-search-trigger:hover{border-color:#8b8b8b;background:#fafafa}.global-search-trigger b{font-weight:500}.global-search-trigger kbd{font:10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#777;border:1px solid #ddd;background:#f7f7f7;padding:2px 5px}
+.search-backdrop{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.42);padding:9vh 20px 20px}.search-backdrop[hidden]{display:none}.search-dialog{width:min(760px,100%);max-height:78vh;margin:auto;background:#fff;border:1px solid #cfcfcf;box-shadow:0 24px 70px rgba(0,0,0,.2);display:flex;flex-direction:column}
+.search-box{display:flex;align-items:center;gap:12px;padding:17px 18px;border-bottom:1px solid var(--line)}.search-icon{font-size:23px;color:#555}.search-box input{flex:1;border:0;outline:0;font:16px/1.5 inherit;min-width:0;color:#171717}.search-box input::placeholder{color:#9a9a9a}.search-close{border:1px solid var(--line);background:#fafafa;color:#666;padding:5px 8px;font-size:11px}
+.search-help{display:flex;justify-content:space-between;gap:16px;padding:8px 18px;border-bottom:1px solid var(--line);font-size:11px;color:#888}.search-results{overflow:auto;padding:8px}
+.search-result{width:100%;border:0;background:#fff;text-align:left;padding:12px 13px;display:grid;grid-template-columns:112px 1fr;gap:5px 12px;color:inherit}.search-result:hover,.search-result.active{background:#f3f3f3}.search-result-kind{grid-row:1/3;font-size:11px;letter-spacing:.4px;color:#777}.search-result-title{font-size:14px;font-weight:600}.search-result-snippet{font-size:12px;line-height:1.65;color:#707070}.search-empty{padding:34px 20px;text-align:center;color:#777;font-size:13px}
+.board-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:42px}.board-card{position:relative;border:1px solid var(--line);padding:22px 22px 20px;min-height:158px;background:#fff;transition:.18s}.board-card:hover{border-color:#777;transform:translateY(-2px)}.board-kicker{font:11px Georgia,serif;color:#777;letter-spacing:1.4px}.board-card h3{margin:17px 0 7px;font-size:19px}.board-card p{margin:0 0 14px;color:#717171;font-size:13px;line-height:1.7}.board-meta{font-size:11px;color:#8a8a8a;border-top:1px solid var(--line);padding-top:10px}.board-arrow{position:absolute;right:18px;top:17px;color:#888}
+.directory-intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.7fr);gap:24px;margin-bottom:30px}.directory-note{border-left:2px solid #222;padding:12px 16px;background:#fafafa;font-size:13px;color:#666;line-height:1.8}.directory-note strong{color:#222}.directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.directory-card{border:1px solid var(--line);padding:18px;min-height:168px;background:#fff}.directory-card .tag{display:inline-block;font-size:10px;letter-spacing:1px;color:#666;background:#f3f3f3;padding:3px 6px;margin-bottom:12px}.directory-card h3{font-size:16px;margin:0 0 8px}.directory-card p{font-size:12.5px;color:#717171;line-height:1.7;margin:0 0 12px}.directory-card small{font-size:11px;color:#8a8a8a}.directory-group{margin:34px 0 12px;display:flex;align-items:baseline;gap:12px}.directory-group h2{font-size:18px;margin:0}.directory-group span{font-size:11px;color:#888}
+.quick-find{margin:0 0 36px;border:1px solid #dcdcdc;background:#fafafa;padding:18px 20px;display:flex;align-items:center;gap:14px}.quick-find strong{font-size:13px}.quick-find span{font-size:12px;color:#777;flex:1}.quick-find button{border:1px solid #bbb;background:#171717;color:#fff;padding:8px 12px;font-size:12px}
+@media(max-width:980px){.directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.global-search-trigger b,.global-search-trigger kbd{display:none}}
+@media(max-width:760px){.global-search-trigger{height:30px;padding:0 9px}.board-grid,.directory-grid{grid-template-columns:1fr}.directory-intro{grid-template-columns:1fr}.search-backdrop{padding:0;background:#fff}.search-dialog{width:100%;height:100%;max-height:none;border:0;box-shadow:none}.search-help{font-size:10px}.search-result{grid-template-columns:86px 1fr}.quick-find{align-items:flex-start;flex-wrap:wrap}.quick-find span{flex-basis:70%}}
+
+</style></head><body><aside class="sidebar"><a class="brand" href="#/"><span class="brand-icon">安</span><span>国家安全法学<small>学习笔记</small></span></a><div class="nav-label">学习导航</div><a class="nav-link" href="#/">⌂ <span>首页</span></a><a class="nav-link" href="#/laws">▤ <span>法律集合</span></a><div class="subnav"><a href="#/law/intro">国家安全法学概说</a><a href="#/law/national">国家安全法</a><a href="#/law/espionage">反间谍法</a></div><a class="nav-link" href="#/tools">⌘ <span>其他工具法律</span></a><a class="nav-link" href="#/comparative">◫ <span>他山之石</span></a><a class="nav-link" href="#/outlook">◎ <span>总体国家安全观</span></a><div class="subnav"><a href="#/theory/elements">五大要素</a><a href="#/theory/coordination">五个统筹</a><a href="#/theory/principles">十个坚持</a><a href="#/outlook/fields">重点领域</a></div><div class="sidebar-foot">学其理 · 明其义 · 知其用<small>NATIONAL SECURITY LAW</small></div></aside><div class="workspace"><header class="topbar"><a href="#/" class="mobile-brand">安 / 国家安全法学</a><span id="breadcrumb">学习空间 / 首页</span><div class="top-actions"><button class="global-search-trigger" id="search-open" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><span>⌕</span><b>查法律 / 条文</b><kbd>Ctrl K</kbd></button><span class="top-note">法学生的知识笔记</span><div class="font-controls" aria-label="网站字号"><button class="font-control-btn" id="font-dec" type="button" title="减小网站字号">A−</button><button class="font-control-btn" id="font-reset" type="button" title="恢复默认字号"><span class="font-scale-value" id="font-scale-value">100%</span></button><button class="font-control-btn" id="font-inc" type="button" title="增大网站字号">A＋</button></div></div></header><div class="search-backdrop" id="search-backdrop" hidden>
+  <section class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="search-box">
+      <span class="search-icon">⌕</span>
+      <label class="sr-only" id="search-title" for="global-search">全站法律与条文检索</label>
+      <input id="global-search" type="search" autocomplete="off" placeholder="试试：国家安全法 第83条 / 反间谍 举报 / 数据安全">
+      <button id="search-close" class="search-close" type="button" aria-label="关闭检索">Esc</button>
+    </div>
+    <div class="search-help"><span>支持法律名称、条文编号、关键词、学习卡片内容</span><span>↑↓ 选择 · Enter 打开</span></div>
+    <div class="search-results" id="search-results"></div>
+  </section>
+</div><main id="app"></main><footer>国家安全法学 </footer></div><script>
 const sources={national:'https://www.stats.gov.cn/gk/tjfg/xgfxfg/202503/t20250310_1958929.html',espionage:'https://www.spp.gov.cn/spp/zdgz/202304/t20230426_612647.shtml',outlook:'https://www.osns.gov.cn/gjaq/rsztgjaqg.htm'};
 const laws={
 intro:{title:'国家安全法学概说',label:'学科入门',desc:'从法学角度出发，理解国家安全法治的整体结构。',overview:[['研究什么','国家安全法学关注维护国家安全过程中形成的法律关系。学习时，可以围绕保护利益、国家机关职责、公民与组织的义务和权利、风险预防制度及法律责任展开。'],['如何阅读法律体系','以宪法为根本依据，以《国家安全法》把握总体框架，再进入反间谍等专门领域。理解一般规定与特别规定的关系，是阅读相关法律的起点。'],['如何分析具体问题','先识别涉及的国家安全利益，再确定适用规范和实施主体，进而审查措施的条件、程序及限度，最后分析救济和责任。此处为学习方法归纳。']],map:[['规范基础','宪法依据 → 国家安全法 → 相关专门法律'],['基本问题','保护何种利益 · 谁承担职责 · 如何履行义务'],['制度运行','风险预防 · 调查处置 · 监督与救济'],['法治要求','依法履职 · 保障权利 · 遵守措施限度']],cards:[['国家安全法学可以围绕哪些问题展开？','保护利益、机关职责、公民与组织的义务和权利、风险预防制度及法律责任。','学习框架归纳'],['《国家安全法》与反间谍法如何衔接？','前者提供国家安全的一般制度框架，后者具体规范反间谍工作。分析问题时应结合一般规定与专门规定。','学习框架归纳'],['维护国家安全与保障权利如何联系？','维护国家安全应遵守宪法和法律，尊重和保障人权，依法保护公民权利和自由。','国家安全法第7条'],['分析国家安全措施时应注意哪些环节？','法律依据、实施主体、适用条件、实施程序、措施限度与救济途径。','学习方法归纳']],ref:'national',reading:'参考阅读：《国家安全法释义》《国家安全法释义与适用》。'},
@@ -85,7 +110,7 @@ const theoryCards=()=>`<div class="theory-grid">${Object.entries(theories).map((
 const fieldGrid=()=>`<div class="fields-head" id="fields"><h3>国家安全的重点领域</h3><small>依官方学习材料列示 · 20 个领域</small></div><div class="fields">${fields.map((f,i)=>`<a class="field-link" href="#/field/${i}"><span>${String(i+1).padStart(2,'0')}</span>${f[0]}<b aria-hidden="true">↗</b></a>`).join('')}</div>`;
 const head=(t,sub,parent='/')=>`<div class="page-head"><a class="back" href="#${parent}">← 返回${parent==='/'?'首页':parent==='/laws'?'法律集合':'总体国家安全观'}</a><h1>${t}</h1><p>${sub}</p></div>`;
 const sourceBlock=l=>`<div class="source"><a href="${sources[l.ref]}" target="_blank" rel="noopener">查阅官方法律原文 ↗</a><p>${l.reading}</p></div>`;
-function home(){app.innerHTML=`<section class="cover"><div class="eyebrow">NATIONAL SECURITY LAW</div><h1>国家安全法学</h1><p class="home-subtitle">目光在事实与规范之间往返流转。<br>Hinund Herwandern des Blickes zwischen Obersatz und Lebenssachverhalt.</p><div class="cover-tag">概念 · 制度 · 规范 · 实践</div></section><div class="content"><div class="home-manifesto"><p>法律是一张层层展开的地图，我们要做的事情就是依照事实在地图上奔跑。提供思维导图作为概览框架，也提供anki知识卡片了解每一个具体法条。</p><p class="ps">ps1：法律集合版块我会尽快学习补充法律本身和条文详解，法律有点多，一部一部来； 至于具体安全板块我还没有很好的想法，欢迎建议。</p><p class="ps">ps2： 法律条文分析本身也需要更好的建议，用专业视角来看总是带着一种法学生的傲慢，但是非专业视角又难以把问题说清楚…… 救我</p></div>${title('01','法律集合','3 个学习专题')}${lawCards()}${title('02','总体国家安全观','理论框架与重点领域')}${theoryCards()}${fieldGrid()}</div>`}
+function home(){app.innerHTML=`<section class="cover"><div class="eyebrow">NATIONAL SECURITY LAW</div><h1>国家安全法学</h1><p class="home-subtitle">目光在事实与规范之间往返流转。<br>Hinund Herwandern des Blickes zwischen Obersatz und Lebenssachverhalt.</p><div class="cover-tag">概念 · 制度 · 规范 · 实践</div></section><div class="content"><div class="home-manifesto"><p>法律是一张层层展开的地图，我们要做的事情就是依照事实在地图上奔跑。提供思维导图作为概览框架，也提供anki知识卡片了解每一个具体法条。</p><p class="ps">ps1：法律集合版块我会尽快学习补充法律本身和条文详解，法律有点多，一部一部来； 至于具体安全板块我还没有很好的想法，欢迎建议。</p><p class="ps">ps2： 法律条文分析本身也需要更好的建议，用专业视角来看总是带着一种法学生的傲慢，但是非专业视角又难以把问题说清楚…… 救我</p></div><div class="quick-find"><strong>随时查条文</strong><span>输入“国家安全法 第83条”“反间谍 举报”或主题关键词，直接进入相关学习位置。</span><button type="button" onclick="openGlobalSearch()">⌕ 打开检索</button></div>${title('01','学习地图','四个板块')}<div class="board-grid"><a class="board-card" href="#/laws"><span class="board-kicker">01 · CORE LAWS</span><span class="board-arrow">↗</span><h3>国家安全法律</h3><p>从总论进入《国家安全法》《反间谍法》等专门法律；每部法律统一组织为概说、总体思维导图与逐条学习卡片。</p><div class="board-meta">已收录：概说 · 国家安全法 · 反间谍法</div></a><a class="board-card" href="#/tools"><span class="board-kicker">02 · TOOLKIT</span><span class="board-arrow">↗</span><h3>其他工具法律</h3><p>把宪法、刑法、程序法、保密、网络数据等规范作为解决国家安全法律问题的工具箱。</p><div class="board-meta">按功能与议题组织 · 便于交叉检索</div></a><a class="board-card" href="#/comparative"><span class="board-kicker">03 · COMPARATIVE</span><span class="board-arrow">↗</span><h3>他山之石：区域国别安全法律</h3><p>为比较法学习预留国别与主题入口，关注国家安全、反间谍、外国代理、投资审查与关键基础设施等制度。</p><div class="board-meta">目录型入口 · 后续逐项补充原始法源</div></a><a class="board-card" href="#/outlook"><span class="board-kicker">04 · OUTLOOK</span><span class="board-arrow">↗</span><h3>总体国家安全观</h3><p>保留五大要素、五个统筹、十个坚持与重点领域，从理论框架连接到具体法律规范。</p><div class="board-meta">理论框架 · 20 个重点领域</div></a></div>${title('02','国家安全法律','概说 · 导图 · Anki')}${lawCards()}${title('03','总体国家安全观','理论框架与重点领域')}${theoryCards()}${fieldGrid()}</div>`}
 function lawPage(id){const l=laws[id];app.innerHTML=head(l.title,l.label+' ｜ '+l.desc,'/laws')+`<div class="tabs" role="tablist" aria-label="学习方式">${[['overview','概说'],['map','思维导图'],['cards','Anki 知识点']].map(([k,v])=>`<button class="tab ${tab===k?'active':''}" role="tab" aria-selected="${tab===k}" aria-controls="panel" id="tab-${k}" data-tab="${k}">${v}</button>`).join('')}</div><div class="content" id="panel" role="tabpanel" aria-labelledby="tab-${tab}"></div>`;renderPanel();document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;lawPage(id);document.querySelector(`#tab-${tab}`).focus()})}
 function renderPanel(){const l=laws[activeLaw],panel=document.querySelector('#panel');if(tab==='overview')panel.innerHTML=`<article class="reading">${l.overview.map(([h,p])=>`<h3>${h}</h3><p>${p}</p>`).join('')}${sourceBlock(l)}</article>`;else if(tab==='map'){const articleIndex=activeLaw==='national'?`<div class="article-map-head"><h3>第1—20条 · 逐条研读索引</h3><small>点击条文进入对应 Anki 卡片</small></div><div class="article-map-grid">${nationalArticles.map((a,i)=>`<button class="article-node" data-article-card="${i}"><b>${esc(a.label)}</b><span>${esc(a.title)}</span></button>`).join('')}</div>`:'';panel.innerHTML=`<h2 style="font-size:20px;margin:0">${l.title} · 知识结构</h2><p class="study-tip">按制度层次梳理，回到条文理解各分支的联系。</p><div class="tree"><div class="tree-root">${l.title}</div><div class="branches">${l.map.map(([h,p])=>`<div class="branch"><h3>${h}</h3><p>${p}</p></div>`).join('')}</div></div>${articleIndex}${sourceBlock(l)}`;if(activeLaw==='national')document.querySelectorAll('[data-article-card]').forEach(b=>b.onclick=()=>{cardIndex=+b.dataset.articleCard;flipped=false;tab='cards';lawPage('national');setTimeout(()=>document.querySelector('#flip')?.focus(),0)})}else renderCard()}
 function renderCard(){const l=laws[activeLaw],c=l.cards[cardIndex];if(activeLaw==='national'){
@@ -104,7 +129,136 @@ document.querySelector('#select-all').onclick=()=>{if(selectedArticleCards.size=
 document.querySelector('#panel').innerHTML=`<div class="reading"><div class="study-top"><span>主动回忆 / <b>${String(cardIndex+1).padStart(2,'0')}</b> · ${l.cards.length} 张</span><button class="btn" id="export">↓ 导出 Anki 卡片</button></div><button class="flashcard" id="flip" aria-label="${flipped?'显示问题':'显示答案'}"><small>${flipped?'ANSWER / 答案':'QUESTION / 问题'}</small><div class="question ${flipped?'answer':''}">${esc(c[flipped?1:0])}</div>${flipped?`<span class="badge">${esc(c[2])}</span>`:''}<span class="hint">${flipped?'点击卡片返回问题':'先尝试作答，再点击查看答案'}</span></button><div class="study-controls"><button class="btn" id="prev" ${cardIndex===0?'disabled':''}>← 上一张</button><span class="study-tip" aria-live="polite">${cardIndex+1} / ${l.cards.length}</span><button class="btn dark" id="next">${cardIndex===l.cards.length-1?'再学一轮 ↻':'下一张 →'}</button></div><p class="study-tip">导出的 TSV 文件可导入 Anki：选择“基础”笔记类型，第1列为正面，第2列为背面。此处为翻卡复习，不含间隔重复排程。</p><div class="details-list"><details><summary>查看全部 ${l.cards.length} 个知识点</summary>${l.cards.map(c=>`<h3>${esc(c[0])}</h3><p>${esc(c[1])} <span class="badge">${esc(c[2])}</span></p>`).join('')}</details></div>${sourceBlock(l)}</div>`;document.querySelector('#flip').onclick=()=>{flipped=!flipped;renderCard();document.querySelector('#flip').focus()};document.querySelector('#prev').onclick=()=>{cardIndex=Math.max(0,cardIndex-1);flipped=false;renderCard()};document.querySelector('#next').onclick=()=>{cardIndex=(cardIndex+1)%l.cards.length;flipped=false;renderCard()};document.querySelector('#export').onclick=()=>{const tsv='#separator:Tab\n#html:false\n'+l.cards.map(c=>[c[0],c[1]+'（'+c[2]+'）'].map(v=>v.replace(/[\t\r\n]/g,' ')).join('\t')).join('\n');const url=URL.createObjectURL(new Blob([tsv],{type:'text/tab-separated-values;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=l.title+'-Anki.tsv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}}
 function theoryPage(id){const t=theories[id];app.innerHTML=head(t.title,t.subtitle,'/outlook')+`<div class="content reading"><div class="details-list">${t.items.map(([h,p],i)=>`<div class="pillar"><span class="index">${String(i+1).padStart(2,'0')}</span><div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>${t.note?`<div class="note">${t.note}</div>`:''}<div class="source"><a href="${sources.outlook}" target="_blank" rel="noopener">来源：驻港国家安全公署 · 认识总体国家安全观 ↗</a><p>条目下的文字为学习提示。</p></div></div>`}
 function fieldPage(id){const f=fields[id];app.innerHTML=head(f[0],f[1],'/outlook')+`<div class="content reading"><span class="badge">重点领域 ${String(+id+1).padStart(2,'0')} / 20</span><h2 style="margin-top:26px">学习切入点</h2><p>${f[1]}是本专题的学习切入点。可从保护对象、相关主体、风险防范和权利保障四个方面梳理制度。</p><div class="note">相关规范线索：${f[2]}。此处提供入门索引，具体适用须结合相关专门法律。</div><h3>带着问题阅读</h3><div class="field-question">${f[3]}</div><details class="note"><summary>展开学习思路</summary><p style="margin:14px 0 0">先查找相关条文的保护对象和制度目的，再辨认履职主体、措施条件及程序，最后说明它与其他领域安全的联系。尝试用一项具体制度回答上述问题。</p></details><div class="source"><a href="${sources.outlook}" target="_blank" rel="noopener">查看总体国家安全观官方学习材料 ↗</a><p><a href="${sources.national}" target="_blank" rel="noopener">对照《国家安全法》全文 ↗</a></p><p>本页为学习导引，问题与阅读思路为整理内容。</p></div><div class="study-controls">${+id>0?`<a class="btn" href="#/field/${+id-1}">← ${fields[+id-1][0]}</a>`:'<span></span>'}${+id<19?`<a class="btn" href="#/field/${+id+1}">${fields[+id+1][0]} →</a>`:'<a class="btn" href="#/outlook">返回总览</a>'}</div></div>`}
-function route(){const path=location.hash.slice(1)||'/',parts=path.split('/');tab='overview';cardIndex=0;flipped=false;let label='首页';if(path==='/')home();else if(path==='/laws'){label='法律集合';app.innerHTML=head('法律集合','以概说把握全貌，以导图建立联系，以卡片巩固记忆。')+`<div class="content">${lawCards()}</div>`}else if(parts[1]==='law'&&laws[parts[2]]){activeLaw=parts[2];label='法律集合 / '+laws[activeLaw].title;lawPage(activeLaw)}else if(parts[1]==='outlook'){label='总体国家安全观';app.innerHTML=head('总体国家安全观','从基本构成、统筹方法与重点领域理解整体框架。')+`<div class="content">${theoryCards()}${fieldGrid()}<div class="source"><a href="${sources.outlook}" target="_blank" rel="noopener">官方学习材料 ↗</a><p>重点领域按所引官方学习材料列示，国家安全的内涵与外延持续发展。</p></div></div>`}else if(parts[1]==='theory'&&theories[parts[2]]){label='总体国家安全观 / '+theories[parts[2]].title;theoryPage(parts[2])}else if(parts[1]==='field'&&/^\d+$/.test(parts[2])&&fields[+parts[2]]){label='总体国家安全观 / '+fields[+parts[2]][0];fieldPage(parts[2])}else{app.innerHTML=head('页面未找到','请返回首页选择学习专题。')}document.querySelector('#breadcrumb').textContent='学习空间 / '+label;document.title=label==='首页'?'国家安全法学 · 学习空间':label.split(' / ').pop()+' · 国家安全法学';document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.hash===`#${path}`||(a.hash==='#/laws'&&parts[1]==='law')||(a.hash==='#/outlook'&&['theory','field'].includes(parts[1]))));window.scrollTo(0,0);if(path==='/outlook/fields')document.querySelector('#fields').scrollIntoView()}
+
+const toolLawGroups=[
+{group:'规范基础与责任',items:[
+['宪法','根本法','用于识别国家权力依据、基本权利与公民义务，是国家安全法治分析的规范起点。','待补充：国家安全相关宪法条文索引'],
+['刑法','实体责任','用于连接危害国家安全犯罪、国家秘密相关犯罪及其他刑事责任问题。','待补充：罪名—构成要件—关联安全利益'],
+['刑事诉讼法','程序保障','用于分析侦查、强制措施、证据、审判与权利保障等程序问题。','待补充：程序节点与特别规定']
+]},
+{group:'信息、数据与秘密保护',items:[
+['保守国家秘密法','保密制度','用于理解国家秘密的确定、保护、监督管理及相应责任。','建议与反间谍、刑法规范交叉学习'],
+['网络安全法','网络治理','用于理解网络运行安全、关键信息基础设施等制度与国家安全之间的联系。','建议建立“主体—义务—监管—责任”索引'],
+['数据安全法','数据治理','用于理解数据安全制度、重要数据与国家安全相关风险治理。','建议建立数据安全专题卡片'],
+['个人信息保护法','权益保护','用于国家安全相关数据处理问题中的个人信息保护与合法处理分析。','与数据安全、网络安全交叉使用']
+]},
+{group:'风险治理与专门领域',items:[
+['反恐怖主义法','公共安全','用于学习恐怖主义风险防范、调查处置与相关权利义务结构。','待补充专门学习页'],
+['生物安全法','生物安全','用于理解生物安全风险防控的制度体系与职责分工。','待补充专门学习页'],
+['出口管制法','涉外安全','用于理解特定物项、技术与服务的出口管制制度。','建议与制裁、供应链议题交叉'],
+['外商投资法及安全审查制度','投资安全','用于学习外商投资与国家安全审查之间的制度接口。','待补充安全审查流程图']
+]}];
+
+const comparativeGroups=[
+{group:'美国',items:[
+['国家安全与情报法制','国别入口','整理国家安全机构权限、情报监督与相关法治结构。','后续以官方法典和政府资料逐项校核'],
+['外国代理与影响活动','主题入口','关注外国代理、影响活动披露等制度及其适用边界。','后续补充原始法源与案例'],
+['外国投资安全审查','主题入口','关注外国投资、关键技术与国家安全审查机制。','后续补充流程与机构分工']
+]},
+{group:'英国与欧洲',items:[
+['英国国家安全法律','国别入口','用于比较反间谍、外国干预与国家安全执法制度。','后续补充现行法文本与修法沿革'],
+['欧盟经济安全与投资审查','区域入口','关注欧盟及成员国在投资、技术与供应链安全方面的制度。','后续按“欧盟—成员国”分层整理'],
+['关键基础设施安全','主题入口','比较关键设施识别、运营者义务、风险评估与监管机制。','后续建立跨国对照表']
+]},
+{group:'亚太与其他',items:[
+['澳大利亚国家安全法制','国别入口','关注反间谍、外国干预、关键基础设施与投资审查等主题。','后续补充官方原文'],
+['日本经济安全法制','国别入口','关注经济安全、关键基础设施、供应链与重要技术等议题。','后续补充官方原文'],
+['区域国别比较框架','方法工具','用“保护利益—主管机关—权力措施—程序控制—监督救济—法律责任”统一比较。','作为各国学习页的共同模板']
+]}];
+
+function directoryPage(kind){
+  const isTools=kind==='tools', groups=isTools?toolLawGroups:comparativeGroups;
+  const titleText=isTools?'其他工具法律':'他山之石：区域国别安全法律';
+  const subtitle=isTools?'把国家安全法律问题放回完整法律体系中分析。':'按国别与主题建立可比较、可追溯的安全法律资料框架。';
+  const note=isTools?'这里先建立“工具箱式”目录。具体条文、效力状态和修订信息应在后续录入时以权威法源逐项核对。':'这里先建立比较法学习目录，不把目录项当作现行法结论。后续应为每一项补充官方原文、修法沿革、主管机关与代表性案例。';
+  app.innerHTML=head(titleText,subtitle)+`<div class="content"><div class="directory-intro"><div class="reading"><h2>${isTools?'如何使用工具法律':'如何做区域国别比较'}</h2><p>${isTools?'遇到国家安全法律问题时，不宜只查一部专门法。可以先确定安全利益与主管事项，再回到宪法、实体法、程序法和信息治理规范核对权限、程序、责任与权利保障。':'建议统一使用“保护利益—制度目标—主管机关—权力措施—程序控制—监督救济—法律责任”的框架。这样可以避免只比较法律名称，而忽略制度功能和法治结构。'}</p></div><div class="directory-note"><strong>资料状态</strong><br>${note}</div></div>${groups.map(g=>`<div class="directory-group"><h2>${g.group}</h2><span>${g.items.length} 个学习入口</span></div><div class="directory-grid">${g.items.map(x=>`<article class="directory-card"><span class="tag">${x[1]}</span><h3>${x[0]}</h3><p>${x[2]}</p><small>${x[3]}</small></article>`).join('')}</div>`).join('')}</div>`;
+}
+
+function stripHTML(s){const d=document.createElement('div');d.innerHTML=String(s||'');return (d.textContent||'').replace(/\s+/g,' ').trim()}
+function normalizeSearch(s){return String(s||'').toLowerCase().replace(/[《》〈〉\s·，,。.;；:：()（）【】\[\]“”"']/g,'')}
+function buildSearchIndex(){
+  const rows=[];
+  Object.entries(laws).forEach(([id,l])=>{
+    rows.push({kind:'法律专题',title:l.title,snippet:l.desc,keywords:l.title+' '+l.label+' '+l.desc,href:'#/law/'+id});
+    (l.cards||[]).forEach((c,i)=>rows.push({kind:l.title+' · 学习卡',title:c[2]||('知识卡 '+(i+1)),snippet:c[0]+' ｜ '+c[1],keywords:l.title+' '+c.join(' '),href:'#/law/'+id+'?card='+i}));
+  });
+  nationalArticles.forEach((a,i)=>rows.push({kind:'国家安全法 · 条文',title:a.label+' '+a.title,snippet:stripHTML(a.lawText).slice(0,150),keywords:'国家安全法 '+a.label+' 第'+a.num+'条 '+a.title+' '+stripHTML(a.lawText)+' '+stripHTML(a.notesHtml||''),href:'#/law/national?article='+i}));
+  toolLawGroups.forEach(g=>g.items.forEach(x=>rows.push({kind:'工具法律 · '+g.group,title:x[0],snippet:x[2],keywords:g.group+' '+x.join(' '),href:'#/tools'})));
+  comparativeGroups.forEach(g=>g.items.forEach(x=>rows.push({kind:'区域国别 · '+g.group,title:x[0],snippet:x[2],keywords:g.group+' '+x.join(' '),href:'#/comparative'})));
+  fields.forEach((f,i)=>rows.push({kind:'总体国家安全观 · 重点领域',title:f[0],snippet:f[1]+' ｜ '+f[2],keywords:f.join(' '),href:'#/field/'+i}));
+  Object.entries(theories).forEach(([id,t])=>rows.push({kind:'总体国家安全观 · 理论',title:t.title,snippet:t.subtitle,keywords:t.title+' '+t.subtitle+' '+t.items.flat().join(' '),href:'#/theory/'+id}));
+  return rows;
+}
+let searchIndex=[],searchActive=0;
+function getSearchIndex(){if(!searchIndex.length)searchIndex=buildSearchIndex();return searchIndex}
+function scoreSearch(row,q){
+  const nq=normalizeSearch(q), hay=normalizeSearch(row.keywords+' '+row.title);
+  if(!nq)return 1;
+  let score=hay.includes(nq)?100:0;
+  const tokens=String(q).toLowerCase().split(/[\s，,。;；]+/).map(normalizeSearch).filter(Boolean);
+  tokens.forEach(t=>{if(normalizeSearch(row.title).includes(t))score+=35;if(hay.includes(t))score+=12});
+  const art=(q.match(/第?\s*(\d+)\s*条/)||[])[1];
+  if(art && hay.includes('第'+art+'条'))score+=120;
+  return score;
+}
+function renderSearch(q=''){
+  const box=document.querySelector('#search-results'); if(!box)return;
+  const rows=getSearchIndex().map(r=>({...r,_s:scoreSearch(r,q)})).filter(r=>r._s>0).sort((a,b)=>b._s-a._s).slice(0,40);
+  searchActive=0;
+  if(!rows.length){box.innerHTML='<div class="search-empty">没有找到匹配内容。可以换一个法律名称、条文号或主题关键词。</div>';return}
+  box.innerHTML=rows.map((r,i)=>`<button class="search-result ${i===0?'active':''}" type="button" data-search-href="${r.href}"><span class="search-result-kind">${esc(r.kind)}</span><span class="search-result-title">${esc(r.title)}</span><span class="search-result-snippet">${esc(r.snippet)}</span></button>`).join('');
+}
+function openGlobalSearch(){
+  const bg=document.querySelector('#search-backdrop'),input=document.querySelector('#global-search');
+  bg.hidden=false; renderSearch(input.value); requestAnimationFrame(()=>input.focus());
+}
+function closeGlobalSearch(){document.querySelector('#search-backdrop').hidden=true;document.querySelector('#search-open')?.focus()}
+function updateSearchActive(delta){
+  const items=[...document.querySelectorAll('.search-result')];if(!items.length)return;
+  items[searchActive]?.classList.remove('active');searchActive=(searchActive+delta+items.length)%items.length;items[searchActive].classList.add('active');items[searchActive].scrollIntoView({block:'nearest'});
+}
+function openSearchResult(el){
+  const href=el?.dataset?.searchHref;if(!href)return;document.querySelector('#search-backdrop').hidden=true;
+  if(location.hash===href){route()}else location.hash=href;
+}
+document.querySelector('#search-open').onclick=openGlobalSearch;
+document.querySelector('#search-close').onclick=closeGlobalSearch;
+document.querySelector('#search-backdrop').addEventListener('click',e=>{if(e.target.id==='search-backdrop')closeGlobalSearch()});
+document.querySelector('#search-results').addEventListener('click',e=>{const b=e.target.closest('[data-search-href]');if(b)openSearchResult(b)});
+document.querySelector('#global-search').addEventListener('input',e=>renderSearch(e.target.value));
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openGlobalSearch();return}
+  if(document.querySelector('#search-backdrop').hidden)return;
+  if(e.key==='Escape'){e.preventDefault();closeGlobalSearch()}
+  else if(e.key==='ArrowDown'){e.preventDefault();updateSearchActive(1)}
+  else if(e.key==='ArrowUp'){e.preventDefault();updateSearchActive(-1)}
+  else if(e.key==='Enter'){e.preventDefault();openSearchResult(document.querySelector('.search-result.active'))}
+});
+
+function route(){
+  const raw=location.hash.slice(1)||'/', splitAt=raw.indexOf('?'), path=splitAt>=0?raw.slice(0,splitAt):raw, query=splitAt>=0?raw.slice(splitAt+1):'';
+  const params=new URLSearchParams(query),parts=path.split('/');
+  tab='overview';cardIndex=0;flipped=false;let label='首页';
+  if(path==='/')home();
+  else if(path==='/laws'){label='国家安全法律';app.innerHTML=head('国家安全法律','以概说把握全貌，以导图建立联系，以逐条 Anki 卡片进入规范细节。')+`<div class="content">${lawCards()}</div>`}
+  else if(path==='/tools'){label='其他工具法律';directoryPage('tools')}
+  else if(path==='/comparative'){label='他山之石';directoryPage('comparative')}
+  else if(parts[1]==='law'&&laws[parts[2]]){
+    activeLaw=parts[2];label='国家安全法律 / '+laws[activeLaw].title;
+    if(params.has('article')&&activeLaw==='national'){const i=Number(params.get('article'));if(Number.isInteger(i)&&nationalArticles[i]){tab='cards';cardIndex=i}}
+    else if(params.has('card')){const i=Number(params.get('card'));if(Number.isInteger(i)&&laws[activeLaw].cards[i]){tab='cards';cardIndex=i}}
+    lawPage(activeLaw)
+  }
+  else if(parts[1]==='outlook'){label='总体国家安全观';app.innerHTML=head('总体国家安全观','从基本构成、统筹方法与重点领域理解整体框架。')+`<div class="content">${theoryCards()}${fieldGrid()}<div class="source"><a href="${sources.outlook}" target="_blank" rel="noopener">官方学习材料 ↗</a><p>重点领域按所引官方学习材料列示，国家安全的内涵与外延持续发展。</p></div></div>`}
+  else if(parts[1]==='theory'&&theories[parts[2]]){label='总体国家安全观 / '+theories[parts[2]].title;theoryPage(parts[2])}
+  else if(parts[1]==='field'&&/^\d+$/.test(parts[2])&&fields[+parts[2]]){label='总体国家安全观 / '+fields[+parts[2]][0];fieldPage(parts[2])}
+  else{app.innerHTML=head('页面未找到','请返回首页选择学习专题。')}
+  document.querySelector('#breadcrumb').textContent='学习空间 / '+label;
+  document.title=label==='首页'?'国家安全法学 · 学习空间':label.split(' / ').pop()+' · 国家安全法学';
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.hash===`#${path}`||(a.hash==='#/laws'&&parts[1]==='law')||(a.hash==='#/outlook'&&['theory','field'].includes(parts[1]))));
+  window.scrollTo(0,0);if(path==='/outlook/fields')document.querySelector('#fields')?.scrollIntoView()
+}
+
 let siteScale=Number(localStorage.getItem('nsl-site-scale')||1);if(!Number.isFinite(siteScale))siteScale=1;siteScale=Math.min(1.3,Math.max(.8,siteScale));
 function applySiteScale(){document.documentElement.style.setProperty('--site-scale',siteScale.toFixed(2));const el=document.querySelector('#font-scale-value');if(el)el.textContent=Math.round(siteScale*100)+'%';localStorage.setItem('nsl-site-scale',String(siteScale))}
 document.querySelector('#font-dec').onclick=()=>{siteScale=Math.max(.8,Math.round((siteScale-.1)*10)/10);applySiteScale()};

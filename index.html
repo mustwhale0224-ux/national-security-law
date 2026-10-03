@@ -105,7 +105,7 @@ body{zoom:var(--site-scale)}
       <input id="global-search" type="search" autocomplete="off" placeholder="试试：国家安全法 第83条 / 人工智能安全 智能体 / 生态安全 公益诉讼">
       <button id="search-close" class="search-close" type="button" aria-label="关闭检索">Esc</button>
     </div>
-    <div class="search-help"><span>支持法律名称、条文编号、二十领域正文、案例与学习卡片内容</span><span>↑↓ 选择 · Enter 打开</span></div>
+    <div class="search-help"><span>支持关键词、法律名称、阿拉伯/中文条文编号、二十领域正文、案例与学习卡片内容</span><span>↑↓ 选择 · Enter 打开</span></div>
     <div class="search-results" id="search-results"></div>
   </section>
 </div><main id="app"></main><footer>国家安全法学 </footer></div><script>
@@ -277,42 +277,131 @@ function directoryPage(kind){
 }
 
 function stripHTML(s){const d=document.createElement('div');d.innerHTML=String(s||'');return (d.textContent||'').replace(/\s+/g,' ').trim()}
-function normalizeSearch(s){return String(s||'').toLowerCase().replace(/[《》〈〉\s·，,。.;；:：()（）【】\[\]“”"']/g,'')}
+function normalizeSearch(s){
+  return String(s||'').toLowerCase()
+    .replace(/[０-９]/g,ch=>String(ch.charCodeAt(0)-0xFF10))
+    .replace(/[《》〈〉\s·，,。.!！?？;；:：()（）【】\[\]“”\"'、—–-]/g,'');
+}
+function chineseNumberToInt(raw){
+  const s=String(raw||'').replace(/^第/,'').replace(/条$/,'').trim();
+  if(!s)return null;
+  if(/^\d+$/.test(s))return Number(s);
+  const digit={零:0,〇:0,一:1,二:2,两:2,三:3,四:4,五:5,六:6,七:7,八:8,九:9};
+  if([...s].every(ch=>ch in digit)){
+    const n=Number([...s].map(ch=>digit[ch]).join(''));
+    return Number.isFinite(n)?n:null;
+  }
+  let total=0,current=0,seen=false;
+  const unit={十:10,百:100,千:1000};
+  for(const ch of s){
+    if(ch in digit){current=digit[ch];seen=true;continue}
+    if(ch in unit){seen=true;const u=unit[ch];total+=(current||1)*u;current=0;continue}
+    return null;
+  }
+  const n=total+current;
+  return seen&&n>0?n:null;
+}
+function extractArticleNumber(q){
+  const text=String(q||'').replace(/[０-９]/g,ch=>String(ch.charCodeAt(0)-0xFF10));
+  let m=text.match(/第?\s*(\d{1,4})\s*条/);
+  if(m)return Number(m[1]);
+  m=text.match(/第?\s*([零〇一二两三四五六七八九十百千]{1,8})\s*条/);
+  if(m)return chineseNumberToInt(m[1]);
+  m=text.match(/(?:国家安全法|反间谍法)\s*第?\s*(\d{1,4})(?!\d)/);
+  if(m)return Number(m[1]);
+  m=text.match(/(?:国家安全法|反间谍法)\s*第?\s*([零〇一二两三四五六七八九十百千]{1,8})/);
+  if(m)return chineseNumberToInt(m[1]);
+  const compact=text.trim();
+  if(/^\d{1,4}$/.test(compact))return Number(compact);
+  return null;
+}
+function searchTokens(q){
+  let text=String(q||'').toLowerCase().replace(/[０-９]/g,ch=>String(ch.charCodeAt(0)-0xFF10));
+  text=text.replace(/第?\s*\d{1,4}\s*条/g,' ').replace(/第?\s*[零〇一二两三四五六七八九十百千]{1,8}\s*条/g,' ');
+  const chunks=text.split(/[\s，,。.!！?？;；:：、/|]+/).map(normalizeSearch).filter(Boolean);
+  return [...new Set(chunks)];
+}
 function buildSearchIndex(){
   const rows=[];
   Object.entries(laws).forEach(([id,l])=>{
-    rows.push({kind:'法律专题',title:l.title,snippet:l.desc,keywords:l.title+' '+l.label+' '+l.desc,href:'#/law/'+id});
-    if(!detailedLawArticles[id]) (l.cards||[]).forEach((c,i)=>rows.push({kind:l.title+' · 学习卡',title:c[2]||('知识卡 '+(i+1)),snippet:c[0]+' ｜ '+c[1],keywords:l.title+' '+c.join(' '),href:'#/law/'+id+'?card='+i}));
+    rows.push({type:'law',lawId:id,kind:'法律专题',title:l.title,snippet:l.desc,titleText:l.title,bodyText:l.desc,noteText:(l.overview||[]).flat().join(' '),keywords:l.title+' '+l.label+' '+l.desc,href:'#/law/'+id});
+    if(!detailedLawArticles[id]) (l.cards||[]).forEach((c,i)=>rows.push({type:'card',lawId:id,kind:l.title+' · 学习卡',title:c[2]||('知识卡 '+(i+1)),snippet:c[0]+' ｜ '+c[1],titleText:(c[2]||'')+' '+c[0],bodyText:c[1],noteText:'',keywords:l.title+' '+c.join(' '),href:'#/law/'+id+'?card='+i}));
   });
-  Object.entries(detailedLawArticles).forEach(([id,articles])=>articles.forEach((a,i)=>rows.push({kind:laws[id].title+' · 条文',title:a.label+' '+a.title,snippet:stripHTML(a.lawText).slice(0,150),keywords:laws[id].title+' '+a.label+' 第'+a.num+'条 '+a.title+' '+stripHTML(a.lawText)+' '+stripHTML(a.notesHtml||''),href:'#/law/'+id+'?article='+i})));
-  toolLawGroups.forEach(g=>g.items.forEach(x=>rows.push({kind:'工具法律 · '+g.group,title:x[0],snippet:x[2],keywords:g.group+' '+x.join(' '),href:'#/tools'})));
-  comparativeGroups.forEach(g=>g.items.forEach(x=>rows.push({kind:'区域国别 · '+g.group,title:x[0],snippet:x[2],keywords:g.group+' '+x.join(' '),href:'#/comparative'})));
-  fieldDetails.forEach((d,i)=>{const f=fields[i];rows.push({kind:'总体国家安全观 · 重点领域',title:d.num+' '+d.title,snippet:f[1]+' ｜ 完整六维学习卡片',keywords:f.join(' ')+' '+d.text,href:'#/field/'+i});d.sections.forEach(s=>rows.push({kind:d.title+' · 专题',title:s.title,snippet:s.text.slice(0,150),keywords:d.title+' '+s.title+' '+s.text,href:'#/field/'+i+'?section='+encodeURIComponent(s.id)}))});
-  Object.entries(theories).forEach(([id,t])=>rows.push({kind:'总体国家安全观 · 理论',title:t.title,snippet:t.subtitle,keywords:t.title+' '+t.subtitle+' '+t.items.flat().join(' '),href:'#/theory/'+id}));
+  Object.entries(detailedLawArticles).forEach(([id,articles])=>articles.forEach((a,i)=>{
+    const lawText=stripHTML(a.lawText),notes=stripHTML(a.notesHtml||'');
+    rows.push({type:'article',lawId:id,articleNum:a.num,articleIndex:i,kind:laws[id].title+' · 条文',title:a.label+' '+a.title,snippet:lawText.slice(0,180),titleText:a.label+' 第'+a.num+'条 '+a.title,bodyText:lawText,noteText:notes,keywords:laws[id].title+' '+a.label+' 第'+a.num+'条 '+a.title+' '+lawText+' '+notes,href:'#/law/'+id+'?article='+i});
+  }));
+  toolLawGroups.forEach(g=>g.items.forEach(x=>rows.push({type:'tool',kind:'工具法律 · '+g.group,title:x[0],snippet:x[2],titleText:x[0],bodyText:x.join(' '),noteText:'',keywords:g.group+' '+x.join(' '),href:'#/tools'})));
+  comparativeGroups.forEach(g=>g.items.forEach(x=>rows.push({type:'comparative',kind:'区域国别 · '+g.group,title:x[0],snippet:x[2],titleText:x[0],bodyText:x.join(' '),noteText:'',keywords:g.group+' '+x.join(' '),href:'#/comparative'})));
+  fieldDetails.forEach((d,i)=>{const f=fields[i];rows.push({type:'field',kind:'总体国家安全观 · 重点领域',title:d.num+' '+d.title,snippet:f[1]+' ｜ 完整六维学习卡片',titleText:d.title,bodyText:d.text,noteText:'',keywords:f.join(' ')+' '+d.text,href:'#/field/'+i});d.sections.forEach(s=>rows.push({type:'field-section',kind:d.title+' · 专题',title:s.title,snippet:s.text.slice(0,150),titleText:d.title+' '+s.title,bodyText:s.text,noteText:'',keywords:d.title+' '+s.title+' '+s.text,href:'#/field/'+i+'?section='+encodeURIComponent(s.id)}))});
+  Object.entries(theories).forEach(([id,t])=>rows.push({type:'theory',kind:'总体国家安全观 · 理论',title:t.title,snippet:t.subtitle,titleText:t.title,bodyText:t.subtitle+' '+t.items.flat().join(' '),noteText:'',keywords:t.title+' '+t.subtitle+' '+t.items.flat().join(' '),href:'#/theory/'+id}));
   return rows;
 }
 let searchIndex=[],searchActive=0;
 function getSearchIndex(){if(!searchIndex.length)searchIndex=buildSearchIndex();return searchIndex}
+function fuzzyChineseCoverage(needle,hay){
+  const q=normalizeSearch(needle),h=normalizeSearch(hay);
+  if(q.length<4||h.length<2)return 0;
+  const grams=[];for(let i=0;i<q.length-1;i++)grams.push(q.slice(i,i+2));
+  if(!grams.length)return 0;
+  let hit=0;grams.forEach(g=>{if(h.includes(g))hit++});
+  return hit/grams.length;
+}
 function scoreSearch(row,q){
-  const nq=normalizeSearch(q), hay=normalizeSearch(row.keywords+' '+row.title);
-  if(!nq)return 1;
-  let score=hay.includes(nq)?100:0;
-  const tokens=String(q).toLowerCase().split(/[\s，,。;；]+/).map(normalizeSearch).filter(Boolean);
-  tokens.forEach(t=>{if(normalizeSearch(row.title).includes(t))score+=35;if(hay.includes(t))score+=12});
-  const art=(q.match(/第?\s*(\d+)\s*条/)||[])[1];
-  if(art && hay.includes('第'+art+'条'))score+=120;
-  return score;
+  const raw=String(q||'').trim();
+  if(!raw)return 1;
+  const nq=normalizeSearch(raw),title=normalizeSearch(row.titleText||row.title),body=normalizeSearch(row.bodyText||''),notes=normalizeSearch(row.noteText||''),all=normalizeSearch((row.keywords||'')+' '+row.title);
+  const tokens=searchTokens(raw),articleNum=extractArticleNumber(raw);
+  const asksNational=nq.includes('国家安全法'),asksEspionage=nq.includes('反间谍法');
+  if(asksNational&&row.lawId&&row.lawId!=='national')return 0;
+  if(asksEspionage&&row.lawId&&row.lawId!=='espionage')return 0;
+  if(articleNum!==null&&row.type!=='article')return 0;
+  if(articleNum!==null&&row.type==='article'&&Number(row.articleNum)!==articleNum)return 0;
+  let score=0,matched=false;
+  if(nq){
+    if(title.includes(nq)){score+=260;matched=true}
+    if(body.includes(nq)){score+=190;matched=true}
+    if(notes.includes(nq)){score+=75;matched=true}
+    if(all.includes(nq)){score+=45;matched=true}
+  }
+  let tokenHits=0;
+  for(const t of tokens){
+    let hit=false;
+    if(title.includes(t)){score+=70;hit=true}
+    if(body.includes(t)){score+=34;hit=true}
+    if(notes.includes(t)){score+=10;hit=true}
+    if(all.includes(t)){score+=8;hit=true}
+    if(!hit&&t.length>=4){
+      const titleCov=fuzzyChineseCoverage(t,title),bodyCov=fuzzyChineseCoverage(t,body);
+      const cov=Math.max(titleCov,bodyCov);
+      if(cov>=.6){score+=Math.round(cov*120);hit=true}
+    }
+    if(hit){tokenHits++;matched=true}
+  }
+  if(tokens.length>1&&tokenHits===tokens.length)score+=80;
+  if(articleNum!==null&&row.type==='article'&&Number(row.articleNum)===articleNum){score+=520;matched=true}
+  const qNorm=normalizeSearch(raw);
+  if(row.lawId==='national'&&qNorm.includes('国家安全法'))score+=140;
+  if(row.lawId==='espionage'&&qNorm.includes('反间谍法'))score+=140;
+  if(row.lawId==='espionage'&&qNorm.includes('反间谍'))score+=110;
+  if(row.type==='article')score+=25;
+  return matched?score:0;
 }
 function renderSearch(q=''){
   const box=document.querySelector('#search-results'); if(!box)return;
-  const rows=getSearchIndex().map(r=>({...r,_s:scoreSearch(r,q)})).filter(r=>r._s>0).sort((a,b)=>b._s-a._s).slice(0,40);
+  const raw=String(q||'').trim();
+  if(!raw){
+    box.innerHTML='<div class="search-empty">输入关键词、法律名称或条文号开始检索。示例：人民安全 / 第83条 / 反间谍法 第12条。</div>';
+    searchActive=0;return;
+  }
+  const rows=getSearchIndex().map(r=>({...r,_s:scoreSearch(r,raw)})).filter(r=>r._s>0).sort((a,b)=>b._s-a._s||((a.type==='article')?-1:1)).slice(0,50);
   searchActive=0;
-  if(!rows.length){box.innerHTML='<div class="search-empty">没有找到匹配内容。可以换一个法律名称、条文号或主题关键词。</div>';return}
-  box.innerHTML=rows.map((r,i)=>`<button class="search-result ${i===0?'active':''}" type="button" data-search-href="${r.href}"><span class="search-result-kind">${esc(r.kind)}</span><span class="search-result-title">${esc(r.title)}</span><span class="search-result-snippet">${esc(r.snippet)}</span></button>`).join('');
+  if(!rows.length){box.innerHTML='<div class="search-empty">没有找到匹配内容。可以换一个关键词、法律名称或条文号。</div>';return}
+  box.innerHTML=rows.map((r,i)=>`<button class="search-result ${i===0?'active':''}" type="button" data-search-href="${esc(r.href)}"><span class="search-result-kind">${esc(r.kind)}</span><span class="search-result-title">${esc(r.title)}</span><span class="search-result-snippet">${esc(r.snippet)}</span></button>`).join('');
 }
 function openGlobalSearch(){
   const bg=document.querySelector('#search-backdrop'),input=document.querySelector('#global-search');
-  bg.hidden=false; renderSearch(input.value); requestAnimationFrame(()=>input.focus());
+  bg.hidden=false; renderSearch(input.value); requestAnimationFrame(()=>{input.focus();input.select()});
 }
 function closeGlobalSearch(){document.querySelector('#search-backdrop').hidden=true;document.querySelector('#search-open')?.focus()}
 function updateSearchActive(delta){
@@ -320,8 +409,9 @@ function updateSearchActive(delta){
   items[searchActive]?.classList.remove('active');searchActive=(searchActive+delta+items.length)%items.length;items[searchActive].classList.add('active');items[searchActive].scrollIntoView({block:'nearest'});
 }
 function openSearchResult(el){
-  const href=el?.dataset?.searchHref;if(!href)return;document.querySelector('#search-backdrop').hidden=true;
-  if(location.hash===href){route()}else location.hash=href;
+  const href=el?.dataset?.searchHref;if(!href)return;
+  document.querySelector('#search-backdrop').hidden=true;
+  if(location.hash===href){route();setTimeout(()=>document.querySelector('#flip,#panel,.field-article')?.scrollIntoView({block:'start'}),0)}else location.hash=href;
 }
 document.querySelector('#search-open').onclick=openGlobalSearch;
 document.querySelector('#search-close').onclick=closeGlobalSearch;
@@ -354,6 +444,7 @@ function route(){
     if(params.has('article')&&detailedLawArticles[activeLaw]){const i=Number(params.get('article'));if(Number.isInteger(i)&&detailedLawArticles[activeLaw][i]){tab='cards';cardIndex=i}}
     else if(params.has('card')){const i=Number(params.get('card'));if(Number.isInteger(i)&&laws[activeLaw].cards[i]){tab='cards';cardIndex=i}}
     lawPage(activeLaw)
+    if(params.has('article')||params.has('card'))setTimeout(()=>document.querySelector('#flip')?.scrollIntoView({block:'start'}),0)
   }
   else if(parts[1]==='outlook'){label='总体国家安全观';app.innerHTML=head('总体国家安全观','从基本构成、统筹方法与重点领域理解整体框架。')+`<div class="content">${theoryCards()}${fieldGrid()}<div class="source"><a href="${sources.outlook}" target="_blank" rel="noopener">官方学习材料 ↗</a><p>重点领域按所引官方学习材料列示，国家安全的内涵与外延持续发展。</p></div></div>`}
   else if(parts[1]==='theory'&&theories[parts[2]]){label='总体国家安全观 / '+theories[parts[2]].title;theoryPage(parts[2])}

@@ -15,7 +15,7 @@
 
 /* Monochrome edition */
 :root{--ink:#171717;--muted:#666666;--line:#e5e5e5;--accent:#171717;--paper:#ffffff;--soft:#f7f7f7}
-.sidebar{background:#fafafa}.brand-icon{border-color:#242424;color:#171717;border-radius:0}.nav-link{border-radius:2px}.nav-link:hover,.nav-link.active{background:#ededed}.subnav{color:#666666}.subnav a:hover{color:#111111}
+.sidebar{background:#fafafa}.brand-icon{border-color:#242424;color:#171717;border-radius:0}.nav-link{border-radius:2px}.nav-link:hover,.nav-link.active{background:#ededed}.subnav{color:#666666}.subnav a:hover{color:#111111}.subnav a.active{color:#111111;font-weight:600}
 .cover{background:#161616;border-color:#161616;min-height:245px}.cover:after{color:#292929}.cover h1{color:#ffffff;font-weight:500}.cover .eyebrow{color:#bdbdbd}.cover p{color:#dedede}.cover-tag{color:#bfbfbf}.cover-tag:before{background:#929292}
 .intro-line{border-left-color:#171717;color:#666666}.section-title .num{color:#777777}.law-card{border-radius:2px}.law-card:hover{border-color:#333333;transform:translateY(-2px)}.card-art,.law-card:nth-child(2) .card-art,.law-card:nth-child(3) .card-art{background:#f5f5f5;color:#555555}.card-art strong{opacity:1}.card-art span{color:#666666}.card-body p,.card-bottom{color:#666666}
 .theory-card{background:#f7f7f7;border-radius:2px}.theory-card:hover{background:#eeeeee}.theory-card p,.theory-card small{color:#666666}.field-link:hover{color:#000000;background:#fafafa}.field-link span,.field-link b{color:#707070}.fields-head small{color:#666666}
@@ -82,7 +82,22 @@ body{zoom:var(--site-scale)}
 .article-notes h1{font-size:17px}.article-notes h2{font-size:16px}.article-notes h3{font-size:15px}.article-notes h4{font-size:14px}
 .article-notes table{font-size:11.5px}.article-note-divider{font-size:10px}
 @media(max-width:760px){.flashcard .question{font-size:16px}.flashcard .question.answer,.flashcard .answer{font-size:14px}.article-law-text,.article-back .article-law-text{font-size:14.5px}.article-notes{font-size:12.5px}.article-callout{font-size:12px}}
-</style></head><body><aside class="sidebar"><a class="brand" href="#/"><span class="brand-icon">安</span><span>国家安全法学<small>学习笔记</small></span></a><div class="nav-label">学习导航</div><a class="nav-link" href="#/">⌂ <span>首页</span></a><a class="nav-link" href="#/laws">▤ <span>国家安全法律集合</span></a><div class="subnav"><a href="#/law/intro">国家安全法学概说</a><a href="#/law/national">国家安全法</a><a href="#/law/espionage">反间谍法</a></div><a class="nav-link" href="#/tools">⌘ <span>法律工具</span></a><a class="nav-link" href="#/comparative">◫ <span>他山之石</span></a><a class="nav-link" href="#/outlook">◎ <span>总体国家安全观</span></a><div class="subnav"><a href="#/theory/elements">五大要素</a><a href="#/theory/coordination">五个统筹</a><a href="#/theory/principles">十个坚持</a><a href="#/outlook/fields">二十个重点领域</a></div><div class="sidebar-foot">学其理 · 明其义 · 知其用<small>NATIONAL SECURITY LAW</small></div></aside><div class="workspace"><header class="topbar"><a href="#/" class="mobile-brand">安 / 国家安全法学</a><span id="breadcrumb">学习空间 / 首页</span><div class="top-actions"><button class="global-search-trigger" id="search-open" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><span>⌕</span><b>查法律 / 条文</b><kbd>Ctrl K</kbd></button><span class="top-note">知识笔记</span><div class="font-controls" aria-label="网站字号"><button class="font-control-btn" id="font-dec" type="button" title="减小网站字号">A−</button><button class="font-control-btn" id="font-reset" type="button" title="恢复默认字号"><span class="font-scale-value" id="font-scale-value">100%</span></button><button class="font-control-btn" id="font-inc" type="button" title="增大网站字号">A＋</button></div></div></header><div class="search-backdrop" id="search-backdrop" hidden>
+
+
+/* ---- 2026-10 comparative / area-country security law research ---- */
+.research-entry{border:1px solid var(--line);background:#fff;margin:4px 0 34px}
+.research-entry>summary{list-style:none;cursor:pointer;padding:24px 26px;display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:center}
+.research-entry>summary::-webkit-details-marker,.research-part>summary::-webkit-details-marker,.continent-item>summary::-webkit-details-marker{display:none}
+.research-entry>summary:hover{background:#fafafa}.research-entry[open]>summary{border-bottom:1px solid var(--line)}
+.research-entry-index{font:22px Georgia,serif;color:#777}.research-entry-title h2{font-size:21px;margin:0 0 4px}.research-entry-title p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.7}.research-entry-toggle{font-size:18px;color:#777;transition:transform .18s}.research-entry[open] .research-entry-toggle{transform:rotate(45deg)}
+.research-body{padding:8px 26px 28px}.research-part{border-bottom:1px solid var(--line)}.research-part:last-child{border-bottom:0}
+.research-part>summary{list-style:none;cursor:pointer;padding:20px 2px 18px;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:start}
+.research-part>summary:hover .research-part-title{color:#000}.research-part-num{font:13px Georgia,serif;color:#888;padding-top:2px}.research-part-title{font-size:17px;font-weight:600}.research-part-desc{font-size:12.5px;color:var(--muted);font-weight:400;margin-top:5px;line-height:1.75}.research-chevron{font-size:14px;color:#888;transition:transform .18s}.research-part[open] .research-chevron{transform:rotate(90deg)}
+.research-part-content{padding:0 2px 22px 54px;color:#555;font-size:14px;line-height:1.85}.research-part-content p{margin:0 0 14px}.research-part-content strong{color:#222}.research-method-flow{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}.research-method-flow span{border:1px solid var(--line);background:#fafafa;padding:7px 10px;font-size:12px;color:#555}.research-method-flow i{font-style:normal;color:#aaa;align-self:center}
+.continent-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.continent-item{border:1px solid var(--line);background:#fff}.continent-item>summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600}.continent-item>summary:hover{background:#fafafa}.continent-item[open]>summary{border-bottom:1px solid var(--line)}.continent-countries{padding:10px 14px 12px;display:flex;flex-wrap:wrap;gap:7px}.country-chip{font-size:11.5px;border:1px solid #ddd;background:#fafafa;padding:5px 8px;color:#555}.country-chip.muted{color:#888;border-style:dashed}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.topic-card{border:1px solid var(--line);padding:14px 15px;background:#fff}.topic-card strong{display:block;font-size:13px;margin-bottom:5px}.topic-card span{font-size:11.5px;color:#777;line-height:1.65}.dimension-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:13px}.dimension-card{border:1px solid var(--line);background:#fafafa;padding:14px}.dimension-card b{display:block;font-size:13px;margin-bottom:7px}.dimension-card p{font-size:11.5px;line-height:1.7;color:#696969;margin:0}.research-note{border-left:2px solid #222;background:#fafafa;padding:12px 15px;margin:12px 0 0;font-size:12.5px;color:#666}
+@media(max-width:760px){.research-entry>summary{grid-template-columns:40px 1fr auto;padding:19px 17px;gap:10px}.research-entry-title h2{font-size:18px}.research-body{padding:4px 17px 22px}.research-part>summary{grid-template-columns:30px 1fr auto;gap:9px}.research-part-title{font-size:15px}.research-part-content{padding-left:39px}.continent-list,.topic-grid,.dimension-list{grid-template-columns:1fr}.research-method-flow i{display:none}}
+</style></head><body><aside class="sidebar"><a class="brand" href="#/"><span class="brand-icon">安</span><span>国家安全法学<small>学习笔记</small></span></a><div class="nav-label">学习导航</div><a class="nav-link" href="#/">⌂ <span>首页</span></a><a class="nav-link" href="#/laws">▤ <span>国家安全法律集合</span></a><div class="subnav"><a href="#/law/intro">国家安全法学概说</a><a href="#/law/national">国家安全法</a><a href="#/law/espionage">反间谍法</a></div><a class="nav-link" href="#/tools">⌘ <span>法律工具</span></a><a class="nav-link" href="#/comparative">◫ <span>他山之石</span></a><div class="subnav comparative-subnav"><a href="#/comparative/method">总论 · 研究方法</a><a href="#/comparative/country">第一编 · 国别体系</a><a href="#/comparative/topic">第二编 · 专题比较</a><a href="#/comparative/database">第三编 · 法律数据库</a></div><a class="nav-link" href="#/outlook">◎ <span>总体国家安全观</span></a><div class="subnav"><a href="#/theory/elements">五大要素</a><a href="#/theory/coordination">五个统筹</a><a href="#/theory/principles">十个坚持</a><a href="#/outlook/fields">二十个重点领域</a></div><div class="sidebar-foot">学其理 · 明其义 · 知其用<small>NATIONAL SECURITY LAW</small></div></aside><div class="workspace"><header class="topbar"><a href="#/" class="mobile-brand">安 / 国家安全法学</a><span id="breadcrumb">学习空间 / 首页</span><div class="top-actions"><button class="global-search-trigger" id="search-open" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><span>⌕</span><b>查法律 / 条文</b><kbd>Ctrl K</kbd></button><span class="top-note">知识笔记</span><div class="font-controls" aria-label="网站字号"><button class="font-control-btn" id="font-dec" type="button" title="减小网站字号">A−</button><button class="font-control-btn" id="font-reset" type="button" title="恢复默认字号"><span class="font-scale-value" id="font-scale-value">100%</span></button><button class="font-control-btn" id="font-inc" type="button" title="增大网站字号">A＋</button></div></div></header><div class="search-backdrop" id="search-backdrop" hidden>
   <section class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
     <div class="search-box">
       <span class="search-icon">⌕</span>
@@ -190,28 +205,75 @@ const toolLawGroups=[
 ]}];
 
 const comparativeGroups=[
-{group:'美国',items:[
-['国家安全与情报法制','国别入口','整理国家安全机构权限、情报监督与相关法治结构。','后续以官方法典和政府资料逐项校核'],
-['外国代理与影响活动','主题入口','关注外国代理、影响活动披露等制度及其适用边界。','后续补充原始法源与案例'],
-['外国投资安全审查','主题入口','关注外国投资、关键技术与国家安全审查机制。','后续补充流程与机构分工']
+{group:'研究方法',items:[
+['区域国别安全法研究方法','总论','建立区域国别安全法学的研究范式，形成从安全语境、风险识别到规范分析与比较研究的方法链条。','方法论入口']
 ]},
-{group:'英国与欧洲',items:[
-['英国国家安全法律','国别入口','用于比较反间谍、外国干预与国家安全执法制度。','后续补充现行法文本与修法沿革'],
-['欧盟经济安全与投资审查','区域入口','关注欧盟及成员国在投资、技术与供应链安全方面的制度。','后续按“欧盟—成员国”分层整理'],
-['关键基础设施安全','主题入口','比较关键设施识别、运营者义务、风险评估与监管机制。','后续建立跨国对照表']
+{group:'国别安全法律体系',items:[
+['北美洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','美国、加拿大等'],
+['欧洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','德国、英国、法国、俄罗斯等'],
+['大洋洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','澳大利亚、新西兰等'],
+['南美洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','巴西、阿根廷等'],
+['亚洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','日本、新加坡、韩国、印度等'],
+['非洲','洲别入口','按照洲别进入具体国家，逐步建立国别安全法律体系研究档案。','南非、埃及等'],
+['南极洲','区域入口','围绕南极条约体系及相关安全法律问题建立区域研究档案。','南极洲无主权国家，按区域制度整理']
 ]},
-{group:'亚太与其他',items:[
-['澳大利亚国家安全法制','国别入口','关注反间谍、外国干预、关键基础设施与投资审查等主题。','后续补充官方原文'],
-['日本经济安全法制','国别入口','关注经济安全、关键基础设施、供应链与重要技术等议题。','后续补充官方原文'],
-['区域国别比较框架','方法工具','用“保护利益—主管机关—权力措施—程序控制—监督救济—法律责任”统一比较。','作为各国学习页的共同模板']
+{group:'专题安全法律比较',items:[
+['外国干预法律制度比较','专题入口','研究面对外国干预风险时，各国采用的法律机制及制度差异。','比较保护利益、主管机关、措施、程序与救济'],
+['外国投资国家安全审查比较','专题入口','比较各国外资安全审查的适用范围、主管机制、审查程序及法律效果。','建立跨国对照表'],
+['关键基础设施安全制度比较','专题入口','比较关键基础设施识别、运营者义务、风险评估和监管机制。','建立跨国对照表'],
+['科技安全与出口管制比较','专题入口','比较关键技术、出口管制及相关科技安全治理机制。','建立跨国对照表']
+]},
+{group:'区域安全法律数据库',items:[
+['国家维度','数据库','按国家整理安全法律资料与国别研究档案。','美国、日本、德国、英国、法国、俄罗斯、澳大利亚、新加坡等'],
+['安全领域维度','数据库','按安全领域建立跨国规范材料与制度索引。','政治、经济、科技、网络、数据、情报、生物、能源、供应链、海洋等'],
+['时间维度','数据库','按照立法、修法、政策和重要制度节点形成时间序列。','用于观察安全法律制度的演变']
 ]}];
 
+const countryContinents=[
+['北美洲',['美国','加拿大','墨西哥']],
+['欧洲',['德国','英国','法国','俄罗斯','意大利','荷兰','瑞典']],
+['大洋洲',['澳大利亚','新西兰']],
+['南美洲',['巴西','阿根廷','智利']],
+['亚洲',['日本','新加坡','韩国','印度','印度尼西亚']],
+['非洲',['南非','埃及','肯尼亚','尼日利亚']],
+['南极洲',['南极条约体系｜区域专题']]
+];
+
+const comparativeTopics=[
+['外国干预法律制度比较','外国代理、影响活动披露、政治过程保护等'],
+['外国投资国家安全审查比较','投资审查对象、触发标准、程序与法律效果'],
+['关键基础设施安全制度比较','设施识别、运营者义务、风险评估与监管'],
+['科技安全与出口管制比较','关键技术、出口管制、科研与技术流动安全'],
+['数据与网络安全制度比较','关键数据、跨境流动、网络与数字基础设施'],
+['供应链与经济安全制度比较','关键物资、产业链韧性、经济安全工具']
+];
+
+function comparativeResearchPage(section=''){
+  const continentHtml=countryContinents.map(([c,cs])=>`<details class="continent-item"><summary><span>${c}</span><span>＋</span></summary><div class="continent-countries">${cs.map(x=>`<span class="country-chip${c==='南极洲'?' muted':''}">${x}</span>`).join('')}</div></details>`).join('');
+  const topicHtml=comparativeTopics.map(([t,d])=>`<article class="topic-card"><strong>${t}</strong><span>${d}</span></article>`).join('');
+  const sectionId={method:'comparative-method',country:'comparative-country',topic:'comparative-topic',database:'comparative-database'}[section]||'';
+  app.innerHTML=head('他山之石：区域国别安全法律研究','从国别角度，研究安具体法域中的安全问题运行。')+`<div class="content"><div class="directory-intro"><div class="reading"><p>以“区域国别知识＋法律机制+安全专题”为基本结构，通过国别纵向研究与专题横向比较相互校验，并以持续更新的法律数据库作为资料基础。</p></div><div class="directory-note"><strong>研究结构</strong><br>方法 → 国别 → 专题 → 数据库。国别研究回答“一国如何治理多类安全风险”，专题比较回答“各国如何处理同一种安全风险”。</div></div><details class="research-entry"${section?' open':''}><summary><span class="research-entry-index">◫</span><span class="research-entry-title"><h2>区域国别安全法律研究</h2><p>点击展开研究框架 · AREA & COUNTRY SECURITY LAW</p></span><span class="research-entry-toggle">＋</span></summary><div class="research-body">
+
+
+
+<details class="research-part" id="comparative-country"${section==='country'?' open':''}><summary><span class="research-part-num">第一编</span><span><div class="research-part-title">国别安全法律体系研究</div><div class="research-part-desc">本部分旨在研究具体国家的安全法律体系，为每个国家建立国别安全法研究档案。</div></span><span class="research-chevron">›</span></summary><div class="research-part-content"><p><strong>具体模块：</strong>北美洲、欧洲、大洋洲、南美洲、亚洲、非洲、南极洲。具体国家在各洲项下依次展开。</p><div class="continent-list">${continentHtml}</div><div class="research-note">每个国别档案后续可统一按照：安全观与战略 → 宪制与机关 → 主要安全立法 → 权力与程序 → 典型执法／判例 → 修法沿革 → 研究文献，持续补充。</div></div></details>
+
+<details class="research-part" id="comparative-topic"${section==='topic'?' open':''}><summary><span class="research-part-num">第二编</span><span><div class="research-part-title">专题安全法律比较研究</div><div class="research-part-desc">本部分旨在研究面对同一种安全风险，各国采用了什么不同的法律机制？</div></span><span class="research-chevron">›</span></summary><div class="research-part-content"><div class="topic-grid">${topicHtml}</div><div class="research-note">专题比较统一关注：保护利益 → 制度目标 → 主管机关 → 适用对象 → 权力措施 → 程序控制 → 监督救济 → 法律责任。</div></div></details>
+
+<details class="research-part" id="comparative-database"${section==='database'?' open':''}><summary><span class="research-part-num">第三编</span><span><div class="research-part-title">区域安全法律数据库建设</div><div class="research-part-desc">以国家、安全领域和时间为三个基本维度组织研究资料。</div></span><span class="research-chevron">›</span></summary><div class="research-part-content"><div class="dimension-list"><article class="dimension-card"><b>第一维 · 国家</b><p>美国、日本、德国、英国、法国、俄罗斯、澳大利亚、新加坡等。</p></article><article class="dimension-card"><b>第二维 · 安全领域</b><p>政治安全、经济安全、科技安全、网络安全、数据安全、情报安全、生物安全、能源安全、供应链安全、海洋安全等。</p></article><article class="dimension-card"><b>第三维 · 时间</b><p>按照立法、修法、国家安全战略、政策文件、重要案件和制度节点建立时间序列，观察安全法律制度的形成与演变。</p></article></div></div></details>
+
+</div></details></div>`;
+  if(sectionId) requestAnimationFrame(()=>document.getElementById(sectionId)?.scrollIntoView({block:'start'}));
+}
+
+
 function directoryPage(kind){
-  const isTools=kind==='tools', groups=isTools?toolLawGroups:comparativeGroups;
-  const titleText=isTools?'其他工具法律':'他山之石：区域国别安全法律';
-  const subtitle=isTools?'把国家安全法律问题放回完整法律体系中分析。':'按国别与主题建立可比较、可追溯的安全法律资料框架。';
-  const note=isTools?'这里先建立“工具箱式”目录。具体条文、效力状态和修订信息应在后续录入时以权威法源逐项核对。':'这里先建立比较法学习目录，不把目录项当作现行法结论。后续应为每一项补充官方原文、修法沿革、主管机关与代表性案例。';
-  app.innerHTML=head(titleText,subtitle)+`<div class="content"><div class="directory-intro"><div class="reading"><h2>${isTools?'如何使用工具法律':'如何做区域国别比较'}</h2><p>${isTools?'遇到国家安全法律问题时，不宜只查一部专门法。可以先确定安全利益与主管事项，再回到宪法、实体法、程序法和信息治理规范核对权限、程序、责任与权利保障。':'建议统一使用“保护利益—制度目标—主管机关—权力措施—程序控制—监督救济—法律责任”的框架。这样可以避免只比较法律名称，而忽略制度功能和法治结构。'}</p></div><div class="directory-note"><strong>资料状态</strong><br>${note}</div></div>${groups.map(g=>`<div class="directory-group"><h2>${g.group}</h2><span>${g.items.length} 个学习入口</span></div><div class="directory-grid">${g.items.map(x=>`<article class="directory-card"><span class="tag">${x[1]}</span><h3>${x[0]}</h3><p>${x[2]}</p><small>${x[3]}</small></article>`).join('')}</div>`).join('')}</div>`;
+  if(kind==='comparative'){comparativeResearchPage();return}
+  const groups=toolLawGroups;
+  const titleText='其他工具法律';
+  const subtitle='把国家安全法律问题放回完整法律体系中分析。';
+  const note='这里先建立“工具箱式”目录。具体条文、效力状态和修订信息应在后续录入时以权威法源逐项核对。';
+  app.innerHTML=head(titleText,subtitle)+`<div class="content"><div class="directory-intro"><div class="reading"><h2>如何使用工具法律</h2><p>遇到国家安全法律问题时，不宜只查一部专门法。可以先确定安全利益与主管事项，再回到宪法、实体法、程序法和信息治理规范核对权限、程序、责任与权利保障。</p></div><div class="directory-note"><strong>资料状态</strong><br>${note}</div></div>${groups.map(g=>`<div class="directory-group"><h2>${g.group}</h2><span>${g.items.length} 个学习入口</span></div><div class="directory-grid">${g.items.map(x=>`<article class="directory-card"><span class="tag">${x[1]}</span><h3>${x[0]}</h3><p>${x[2]}</p><small>${x[3]}</small></article>`).join('')}</div>`).join('')}</div>`;
 }
 
 function stripHTML(s){const d=document.createElement('div');d.innerHTML=String(s||'');return (d.textContent||'').replace(/\s+/g,' ').trim()}
@@ -283,6 +345,10 @@ function route(){
   else if(path==='/laws'){label='国家安全法律';app.innerHTML=head('国家安全法律','以概说把握全貌，以导图建立联系，以逐条 Anki 卡片进入规范细节。')+`<div class="content">${lawCards()}</div>`}
   else if(path==='/tools'){label='其他工具法律';directoryPage('tools')}
   else if(path==='/comparative'){label='他山之石';directoryPage('comparative')}
+  else if(parts[1]==='comparative'&&['method','country','topic','database'].includes(parts[2])){
+    const names={method:'总论 · 研究方法',country:'第一编 · 国别体系',topic:'第二编 · 专题比较',database:'第三编 · 法律数据库'};
+    label='他山之石 / '+names[parts[2]];comparativeResearchPage(parts[2]);
+  }
   else if(parts[1]==='law'&&laws[parts[2]]){
     activeLaw=parts[2];label='国家安全法律 / '+laws[activeLaw].title;
     if(params.has('article')&&detailedLawArticles[activeLaw]){const i=Number(params.get('article'));if(Number.isInteger(i)&&detailedLawArticles[activeLaw][i]){tab='cards';cardIndex=i}}
@@ -295,8 +361,9 @@ function route(){
   else{app.innerHTML=head('页面未找到','请返回首页选择学习专题。')}
   document.querySelector('#breadcrumb').textContent='学习空间 / '+label;
   document.title=label==='首页'?'国家安全法学 · 学习空间':label.split(' / ').pop()+' · 国家安全法学';
-  document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.hash===`#${path}`||(a.hash==='#/laws'&&parts[1]==='law')||(a.hash==='#/outlook'&&['theory','field'].includes(parts[1]))));
-  window.scrollTo(0,0);if(path==='/outlook/fields')document.querySelector('#fields')?.scrollIntoView()
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.hash===`#${path}`||(a.hash==='#/laws'&&parts[1]==='law')||(a.hash==='#/comparative'&&parts[1]==='comparative')||(a.hash==='#/outlook'&&['theory','field'].includes(parts[1]))));
+  document.querySelectorAll('.subnav a').forEach(a=>a.classList.toggle('active',a.hash===`#${path}`));
+  if(!(parts[1]==='comparative'&&parts[2]))window.scrollTo(0,0);if(path==='/outlook/fields')document.querySelector('#fields')?.scrollIntoView()
 }
 
 let siteScale=Number(localStorage.getItem('nsl-site-scale')||1);if(!Number.isFinite(siteScale))siteScale=1;siteScale=Math.min(1.3,Math.max(.8,siteScale));
